@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <h1 align="center">Registartion form</h1>
+
+    <form action="details.php" method="get">
+      <fieldset>
+        <legend align="center"><h2>Enter your details here</h2></legend>
+        <label>First Name : </label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          autofocus
+          placeholder="Enter first name" required
+        />
+        <label>Last Name : </label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          autofocus
+          placeholder="Enter last name" required
+        />
+
+        <br /><br />
+        <label>Email : </label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required />
+        <br /><br />
+
+        <label >Phone Number:</label>
+    <input type="tel" id="phone" name="phone"
+           pattern="[0-9]{10}" 
+           placeholder="Enter mobile number"
+           required>
+    <br><br>
+
+    <label >Age:</label>
+    <input type="number" id="age" name="age" min="18" max="45" required>
+    <br><br>
+
+    <label>Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+    <br><br>
+
+        <input type="submit" value="Submit" />
+        
+      </fieldset>
+    </form>
+  </body>
+</html>
