@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    
+    *{
+        margin: 0;
+        padding: 0;
+    }
+      .dashboard{
+        display: flex;
+        height: 100vh;
+      }
+      .sideNav {
+        background-color: #0f172a;
+        color: white;
+        width: 25%;
+        padding: 25px;
+      }
+      main {
+        background-color: cadetblue;
+        width: 75%;
+        
+        padding: 25px;
+      }
+
+      .navItems{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .navItems a{
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+      }
+      .cards{
+        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        
+      }
+      .card{
+        height: 150px;
+        width: 250px;
+        padding: 25px;
+        background-color: azure;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        font-size: 28px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <aside class="sideNav">
+        <h1>Dashboard</h1>
+        <nav class="navItems">
+            <a href="#">Home</a>
+             <a href="#">Users</a>
+             <a href="#">Forms</a>
+             <a href="#">Reports</a>
+            </nav>
+      </aside>
+      <main>
+        <h1>Welcome Admin</h1>
+        <div class="cards">
+            <div class="card">Total Users</div>
+            <div class="card">Sales Reports</div>
+            <div class="card">Enquiry Submissions</div>
+            <div class="card">Profit Percentage</div>
+            <div class="card">Polls Created</div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
