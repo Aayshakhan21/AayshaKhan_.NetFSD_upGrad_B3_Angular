@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Toggle App</title>
+
+<style>
+  body {
+    padding: 40px;
+  }
+
+  .light {
+    background-color: white;
+    color: black;
+  }
+
+  .dark {
+    background-color: #121212;
+    color: white;
+  }
+
+  button {
+    padding: 10px 18px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 6px;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>My Blog</h1>
+<p>This is a simple blog page with theme toggle feature.</p>
+
+<button id="toggleBtn">Toggle Theme</button>
+
+<script>
+let toggleBtn = document.getElementById("toggleBtn");
+let body = document.body;
+
+let savedTheme = localStorage.getItem("theme");
+
+if (savedTheme) {
+  body.className = savedTheme;
+} else {
+  body.className = "light";
+}
+
+toggleBtn.addEventListener("click", () => {
+  if (body.className === "light") {
+    body.className = "dark";
+    localStorage.setItem("theme", "dark");
+  } else {
+    body.className = "light";
+    localStorage.setItem("theme", "light");
+  }
+});
+</script>
+
+</body>
+</html>
