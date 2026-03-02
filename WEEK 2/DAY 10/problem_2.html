@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-Commerce Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body{
+      background:#f8f9fa;
+    }
+    .theme{
+      background:#0d6efd;
+      color:white;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MyShop</a>
+
+    <button class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end bg-dark text-white" id="menu">
+      <div class="offcanvas-header">
+        <h5>Menu</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li><a class="nav-link text-white" href="#">Home</a></li>
+          <li><a class="nav-link text-white" href="#">Products</a></li>
+          <li><a class="nav-link text-white" href="#">Offers</a></li>
+          <li><a class="nav-link text-white" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container-fluid theme text-center py-5">
+  <h1>Welcome to MyShop</h1>
+  <p>Best Deals on Electronics</p>
+  <button class="btn btn-light">Shop Now</button>
+</div>
+
+<div class="container mt-4">
+<div id="slider" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" class="d-block w-100" style="height:300px; object-fit:cover;">
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" class="d-block w-100" style="height:300px; object-fit:cover;">
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" class="d-block w-100" style="height:300px; object-fit:cover;">
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" data-bs-target="#slider" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" data-bs-target="#slider" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+</div>
+
+<div class="container mt-5">
+  <h3 class="text-center mb-4">Featured Products</h3>
+
+  <div class="row g-4">
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card p-3 text-center">
+        <h5>Laptop</h5>
+        <p>₹50000</p>
+        <button class="btn btn-primary btn-sm">Buy</button>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card p-3 text-center">
+        <h5>Mobile</h5>
+        <p>₹20000</p>
+        <button class="btn btn-primary btn-sm">Buy</button>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card p-3 text-center">
+        <h5>Headphones</h5>
+        <p>₹3000</p>
+        <button class="btn btn-primary btn-sm">Buy</button>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card p-3 text-center">
+        <h5>Smart Watch</h5>
+        <p>₹4000</p>
+        <button class="btn btn-primary btn-sm">Buy</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="card p-4 text-center">
+    <h4>Subscribe Newsletter</h4>
+
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-6">
+        <input class="form-control mb-2" placeholder="Enter email">
+        <button class="btn btn-success w-100">Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bg-dark text-white text-center p-3 mt-5">
+  © 2026 MyShop E-commerce
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

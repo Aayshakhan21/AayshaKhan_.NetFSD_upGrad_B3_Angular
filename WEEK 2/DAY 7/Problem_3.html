@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data</title>
+</head>
+<body>
+
+<h1>Employee Data</h1>
+<hr>
+
+<label>Select Job:</label>
+<select id="job">
+  <option>All Employees</option>
+  <option>Manager</option>
+  <option>Salesman</option>
+  <option>Clerk</option>
+</select>
+
+<button onclick="showEmployees()">Show Emps</button>
+
+<br><br>
+
+<table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Job</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody id="result"></tbody>
+</table>
+
+<script>
+
+const employees = [
+  {id:101, name:"Ankita", job:"Manager", salary:60000},
+  {id:102, name:"Rahul", job:"Salesman", salary:25000},
+  {id:103, name:"Neha", job:"Clerk", salary:20000},
+  {id:104, name:"Amit", job:"Manager", salary:65000},
+  {id:105, name:"Sara", job:"Salesman", salary:30000}
+];
+
+function showEmployees(){
+
+let selectedJob = document.getElementById("job").value;
+let output = document.getElementById("result");
+
+output.innerHTML = "";
+
+let filteredEmployees = employees.filter(emp => {
+  if(selectedJob === "All Employees"){
+    return true;              
+  } else {
+    return emp.job === selectedJob;   
+  }
+});
+
+for (let emp of filteredEmployees) {
+  let row = `<tr>
+              <td>${emp.id}</td>
+              <td>${emp.name}</td>
+              <td>${emp.job}</td>
+              <td>${emp.salary}</td>
+            </tr>`;
+
+  output.innerHTML += row;
+}
+}
+
+</script>
+
+</body>
+</html>
