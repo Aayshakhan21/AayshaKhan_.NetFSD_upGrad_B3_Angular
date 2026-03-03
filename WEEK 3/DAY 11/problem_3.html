@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Cart</title>
+</head>
+
+<body>
+
+<h2>Product List</h2>
+<hr>
+
+<h3>Cart Items: <span id="count">0</span></h3>
+
+<div id="productList">
+
+    <div class="product">
+        <p>Laptop - ₹50000</p>
+        <input type="button" class="btn" value="Add to Cart">
+        <span class="msg"></span>
+    </div>
+    <hr>
+
+    <div class="product">
+        <p>Mobile - ₹20000</p>
+        <input type="button" class="btn" value="Add to Cart">
+        <span class="msg"></span>
+    </div>
+    <hr>
+
+    <div class="product">
+        <p>Headphones - ₹2000</p>
+        <input type="button" class="btn" value="Add to Cart">
+        <span class="msg"></span>
+    </div>
+    <hr>
+
+    <div class="product">
+        <p>Smart Watch - ₹5000</p>
+        <input type="button" class="btn" value="Add to Cart">
+        <span class="msg"></span>
+    </div>
+
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+<script>
+$(document).ready(function(){
+
+    let counter = 0;
+    $("#productList").on("click", ".btn", function(){
+
+        counter++;
+
+        $("#count").text(counter);
+        $(this).prop("disabled", true);
+
+        $(this).val("Added");
+
+        $(this).siblings(".msg").text("Added to Cart").css("color","green");
+
+    });
+
+});
+</script>
+
+</body>
+</html>
