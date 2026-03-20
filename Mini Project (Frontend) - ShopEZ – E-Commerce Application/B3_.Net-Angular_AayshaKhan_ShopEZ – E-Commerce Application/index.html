@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEZ – Premium Electronics Store</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar" role="region" aria-label="Promotional announcement">
+  Free Shipping on orders above &#8377;50,000 &nbsp;|&nbsp; Use code <strong>SHOPEZ10</strong> for 10% off
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand logo" aria-label="ShopEZ Home">
+      <ion-icon name="bag-handle" aria-hidden="true"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNav">
+      <form class="nav-search-form d-flex mx-auto my-2 my-lg-0" id="navSearchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" id="navSearchInput"
+                 placeholder="Search products, brands, categories…" autocomplete="off">
+          <button class="btn" type="submit" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">
+            <ion-icon name="home-outline"></ion-icon> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">
+            <ion-icon name="grid-outline"></ion-icon> Products
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cart-nav-link" href="cart.html">
+            <ion-icon name="cart-outline"></ion-icon> Cart
+            <span class="cart-nav-count" id="cartCountBadge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE SIDEBAR ── -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <a href="index.html" class="logo text-decoration-none">
+      <ion-icon name="bag-handle"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="mb-3" id="mobileSearchForm">
+      <input type="search" id="mobileSearchInput" class="form-control" placeholder="Search products...">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item mb-2"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="products.html">Products</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero-pro">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content m-4">
+      <div class="hero-badge">
+        <ion-icon name="flash-outline"></ion-icon>
+        New Arrivals 2026
+      </div>
+      <h1 class="hero-title">
+        Shop Smarter,<br>Live <span>Better</span>
+      </h1>
+      <p class="hero-text">
+        Discover the latest tech gadgets, electronics and accessories at unbeatable prices.
+        Premium quality, lightning-fast delivery.
+      </p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn btn-primary">
+          <ion-icon name="bag-handle-outline"></ion-icon> Shop Now
+        </a>
+        <a href="products.html?category=Electronics" class="btn btn-outline-light">
+          Explore Deals
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>50K+</strong><span>Customers</span></div>
+        <div><strong>1,200+</strong><span>Products</span></div>
+        <div><strong>4.9★</strong><span>Rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE STRIP ── -->
+<div class="feature-strip">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-lg-3 col-sm-6">
+        <div class="feature-tile">
+          <div class="feature-tile-icon blue"><ion-icon name="car-outline"></ion-icon></div>
+          <div>
+            <div class="feature-tile-title">Free Delivery</div>
+            <div class="feature-tile-text">On orders above ₹50,000</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="feature-tile">
+          <div class="feature-tile-icon green"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+          <div>
+            <div class="feature-tile-title">Secure Payments</div>
+            <div class="feature-tile-text">100% protected transactions</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="feature-tile">
+          <div class="feature-tile-icon amber"><ion-icon name="return-down-back-outline"></ion-icon></div>
+          <div>
+            <div class="feature-tile-title">Easy Returns</div>
+            <div class="feature-tile-text">7-day hassle-free returns</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="feature-tile">
+          <div class="feature-tile-icon purple"><ion-icon name="headset-outline"></ion-icon></div>
+          <div>
+            <div class="feature-tile-title">24/7 Support</div>
+            <div class="feature-tile-text">Dedicated customer service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SHOP BY CATEGORY ── -->
+<section class="py-5">
+  <div class="container">
+    <div class="section-hd">
+      <div>
+        <h2 class="section-hd-title">Shop by <span>Category</span></h2>
+        <p class="section-hd-sub">Browse our wide range of product categories</p>
+      </div>
+      <a href="products.html" class="view-all-link">
+        View All <ion-icon name="arrow-forward-outline"></ion-icon>
+      </a>
+    </div>
+    <div class="row g-3" id="categoriesGrid"></div>
+  </div>
+</section>
+
+<!-- ── FEATURED PRODUCTS ── -->
+<section class="py-5 bg-light border-top border-bottom">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+      <div>
+        <h2 class="fw-bold mb-1">Featured <span class="text-primary">Products</span></h2>
+        <p class="text-muted small mb-0">Hand-picked top picks for you</p>
+      </div>
+      <a href="products.html" class="fw-semibold text-decoration-none text-primary d-flex align-items-center gap-1">
+        View All <ion-icon name="arrow-forward-outline"></ion-icon>
+      </a>
+    </div>
+    <div class="row g-4" id="featuredGrid">
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEST SELLERS ── -->
+<section class="py-5 bg-white border-top">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+      <div>
+        <h2 class="fw-bold mb-1">Our <span class="text-primary">Best Sellers</span></h2>
+        <p class="text-muted small mb-0">Most popular products loved by customers</p>
+      </div>
+      <a href="products.html" class="fw-semibold text-decoration-none text-primary d-flex align-items-center gap-1">
+        View All <ion-icon name="arrow-forward-outline"></ion-icon>
+      </a>
+    </div>
+    <div class="row g-4" id="bestSellerGrid">
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+      <div class="col-xl-3 col-md-6 col-6"><div class="product-skeleton"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section class="newsletter-section py-5 text-center text-white">
+  <div class="container">
+    <h2 class="fw-bold mb-2 text-white">Stay in the Loop</h2>
+    <p class="text-white-50 mb-4">Get exclusive deals, new arrivals and tech news straight to your inbox.</p>
+    <form class="newsletter-form d-flex justify-content-center flex-wrap gap-3">
+      <input type="email" class="form-control rounded-pill px-4 newsletter-input"
+             placeholder="Enter your email address">
+      <button class="btn btn-dark rounded-pill px-4 fw-semibold newsletter-btn" type="submit">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand">
+          <ion-icon name="bag-handle"></ion-icon>
+          Shop<span class="brand-accent">EZ</span>
+        </div>
+        <p class="footer-desc">Your one-stop destination for premium electronics and gadgets. Quality products, great prices.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="#" aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+          <a href="#" aria-label="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Categories</div>
+        <ul class="footer-links">
+          <li><a href="products.html?category=Electronics">Electronics</a></li>
+          <li><a href="products.html?category=Audio">Audio</a></li>
+          <li><a href="products.html?category=Gaming">Gaming</a></li>
+          <li><a href="products.html?category=Wearables">Wearables</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ShopEZ. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.js"></script>
+<script src="js/common.js"></script>
+<script src="js/products.js"></script>
+<script>
+  const CAT_META = {
+    Electronics: { cls: 'cat-electronics', icon: 'laptop-outline' },
+    Audio:       { cls: 'cat-audio',       icon: 'headset-outline' },
+    Wearables:   { cls: 'cat-wearables',   icon: 'watch-outline' },
+    Accessories: { cls: 'cat-accessories', icon: 'hardware-chip-outline' },
+    Camera:      { cls: 'cat-camera',      icon: 'camera-outline' },
+    Tablets:     { cls: 'cat-tablets',     icon: 'tablet-portrait-outline' },
+    Gaming:      { cls: 'cat-gaming',      icon: 'game-controller-outline' },
+  };
+
+  /*
+   * Newsletter form — validate email format before accepting subscription.
+   * e.preventDefault() stops the default form submission (page reload).
+   * Regex checks for a valid email shape before showing success.
+   */
+  $('.newsletter-form').on('submit', (e) => {
+    e.preventDefault();
+    const emailInput = $('.newsletter-input');
+    const emailVal   = emailInput.val().trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailVal) {
+      showToast('Please enter your email address.', 'error');
+      return;
+    }
+    if (!emailRegex.test(emailVal)) {
+      showToast('Please enter a valid email address.', 'error');
+      return;
+    }
+    emailInput.val('');
+    showToast('Thanks for subscribing! You\'re now on the list.', 'success');
+  });
+
+  $('#navSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#navSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  $('#mobileSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#mobileSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  $(document).ready(() => {
+    loadProducts((products) => {
+
+      // Build category cards
+      const catCounts = products.reduce((acc, p) => {
+        acc[p.category] = (acc[p.category] || 0) + 1;
+        return acc;
+      }, {});
+
+      const catHtml = Object.entries(catCounts).map(([cat, count]) => {
+        const { cls, icon } = CAT_META[cat] || { cls: 'cat-default', icon: 'apps-outline' };
+        return `
+          <div class="col-lg-2 col-md-3 col-4">
+            <a href="products.html?category=${encodeURIComponent(cat)}" class="text-decoration-none">
+              <div class="category-card">
+                <div class="cat-icon-wrap ${cls}">
+                  <ion-icon name="${icon}"></ion-icon>
+                </div>
+                <div class="cat-name">${cat}</div>
+                <div class="cat-count">${count} item${count > 1 ? 's' : ''}</div>
+              </div>
+            </a>
+          </div>`;
+      }).join('');
+
+      document.getElementById('categoriesGrid').innerHTML = catHtml;
+
+      // Featured: top 4 by rating
+      const featured = [...products].sort((a, b) => b.rating - a.rating).slice(0, 4);
+      document.getElementById('featuredGrid').innerHTML = featured.map(p => createProductCard(p, 'featuredGrid')).join('');
+
+      // Best sellers: next 4 by reviews, excluding featured products
+      // Uses a Set of ids (not object references) for safe deduplication
+      const featuredIds = new Set(featured.map(p => p.id));
+      const bestSellers = [...products]
+        .filter(p => !featuredIds.has(p.id))
+        .sort((a, b) => (b.sold || b.reviews) - (a.sold || a.reviews))
+        .slice(0, 4);
+
+      $('#bestSellerGrid').html(bestSellers.map(p => createProductCard(p, 'bestSellerGrid')).join(''));
+    });
+  });
+</script>
+</body>
+</html>
