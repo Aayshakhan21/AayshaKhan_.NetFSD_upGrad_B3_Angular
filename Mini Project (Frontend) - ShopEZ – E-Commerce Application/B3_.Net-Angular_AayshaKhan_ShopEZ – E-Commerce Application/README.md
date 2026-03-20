@@ -310,6 +310,3 @@ npx serve .
 | Product data is static | Adding/removing products requires editing `products.json` manually |
 | Reviews are simulated | Same 3 placeholder reviews shown for all products |
 
----
-
-*ShopEZ — Built for upGrad / Cognizant Frontend Training Program · 2026*
