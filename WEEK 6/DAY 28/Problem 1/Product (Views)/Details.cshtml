@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Product
+
+<h2 class="display-5 text-center mb-4">Product Details</h2>
+
+<div class="card  p-4">
+
+    <p><b>Product Id:</b> @Model.ProductId</p>
+    <p><b>Name:</b> @Model.ProductName</p>
+    <p><b>Category:</b> @Model.Category</p>
+    <p><b>Price:</b> ₹ @Model.Price</p>
+    <p><b>Stock:</b> @Model.Stock</p>
+
+    <a asp-controller="Product"
+       asp-action="Index"
+    >
+        Back to List
+    </a>
+
+</div>

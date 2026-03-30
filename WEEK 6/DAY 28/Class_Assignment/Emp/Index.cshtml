@@ -1,0 +1,29 @@
+﻿@using WebApplication1.Models
+@model List<Employee>
+
+<h1 class="display-5">Employee Controller - Index</h1>
+
+<table border="1" cellpadding="10" cellspacing="0" class="table table-secondary m-4">
+    <thead>
+        <tr>
+            <th>Emp No</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Salary</th>
+            <th>Dept No</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Employee emp in Model)
+        {
+            <tr>
+                <td>@emp.Empno</td>
+                <td>@emp.Ename</td>
+                <td>@emp.Job</td>
+                <td>@emp.Salary</td>
+                <td>@emp.Deptno</td>
+            </tr>
+        }
+    </tbody>
+</table>
