@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details – ShopEZ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar" role="region" aria-label="Promotional announcement">
+  Free Shipping on orders above &#8377;50,000 &nbsp;|&nbsp; Use code <strong>SHOPEZ10</strong> for 10% off
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand logo" aria-label="ShopEZ Home">
+      <ion-icon name="bag-handle" aria-hidden="true"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNav">
+      <form class="nav-search-form d-flex mx-auto my-2 my-lg-0" id="navSearchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" id="navSearchInput"
+                 placeholder="Search products, brands, categories…" autocomplete="off">
+          <button class="btn" type="submit" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <ion-icon name="home-outline"></ion-icon> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="products.html">
+            <ion-icon name="grid-outline"></ion-icon> Products
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cart-nav-link" href="cart.html">
+            <ion-icon name="cart-outline"></ion-icon> Cart
+            <span class="cart-nav-count" id="cartCountBadge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE SIDEBAR ── -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <a href="index.html" class="logo text-decoration-none">
+      <ion-icon name="bag-handle"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="mb-3" id="mobileSearchForm">
+      <input type="search" id="mobileSearchInput" class="form-control" placeholder="Search products...">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item mb-2"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="products.html">Products</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── LOADING SKELETON ── -->
+<div id="detailLoading" class="container py-5">
+  <div class="row g-5">
+    <div class="col-lg-5"><div class="skeleton" style="height:420px;border-radius:24px"></div></div>
+    <div class="col-lg-7">
+      <div class="skeleton mb-3" style="height:14px;width:35%"></div>
+      <div class="skeleton mb-3" style="height:36px;width:85%"></div>
+      <div class="skeleton mb-3" style="height:20px;width:50%"></div>
+      <div class="skeleton mb-4" style="height:72px"></div>
+      <div class="skeleton" style="height:52px;width:55%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NOT FOUND ── -->
+<div id="notFound" class="container py-5 text-center" style="display:none">
+  <div class="empty-state">
+    <div class="empty-state-icon"><ion-icon name="alert-circle-outline"></ion-icon></div>
+    <h4>Product Not Found</h4>
+    <p>The product you're looking for doesn't exist or has been removed.</p>
+    <a href="products.html" class="btn btn-primary">
+      <ion-icon name="arrow-back-outline"></ion-icon> Back to Products
+    </a>
+  </div>
+</div>
+
+<!-- ── PRODUCT DETAIL CONTENT ── -->
+<div id="detailContent" style="display:none">
+
+  <!-- Page Header with breadcrumb -->
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="products.html">Products</a></li>
+          <li class="breadcrumb-item active" id="breadcrumbName">Product</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-5">
+
+      <!-- Product Image -->
+      <div class="col-lg-5">
+        <div class="detail-image-card">
+          <img id="detailImg" src="" alt="">
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="col-lg-7">
+        <p class="product-category-label" id="detailCat"></p>
+        <div id="detailBadgeWrap"></div>
+        <h1 class="detail-title" id="detailName"></h1>
+
+        <div class="product-stars mb-3">
+          <span class="star-icons" id="detailStars"></span>
+          <span class="product-review-count" id="detailReviews"></span>
+        </div>
+
+        <div class="mb-3">
+          <span class="detail-price-main" id="detailPrice"></span>
+          <span class="detail-price-orig" id="detailOriginal"></span>
+          <span class="detail-savings-tag" id="detailSavings" style="display:none"></span>
+        </div>
+
+        <p class="detail-description" id="detailDesc"></p>
+
+        <div class="mb-4">
+          <div class="detail-meta-row">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            <span>In Stock – Ready to Ship</span>
+          </div>
+          <div class="detail-meta-row">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            <span>1 Year Manufacturer Warranty</span>
+          </div>
+          <div class="detail-meta-row">
+            <ion-icon name="car-outline"></ion-icon>
+            <span id="detailShipping"></span>
+          </div>
+          <div class="detail-meta-row">
+            <ion-icon name="return-down-back-outline"></ion-icon>
+            <span>7-Day Easy Returns</span>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3 flex-wrap">
+          <button class="btn btn-primary btn-lg" id="addCartBtn" onclick="handleAddToCart()">
+            <ion-icon name="cart-outline"></ion-icon> Add to Cart
+          </button>
+          <button class="btn btn-warning btn-lg fw-bold text-white" id="buyNowBtn" onclick="handleBuyNow()">
+            <ion-icon name="flash-outline"></ion-icon> Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs: Description / Specifications / Reviews -->
+    <div class="mt-5">
+      <ul class="nav detail-tabs border-bottom mb-4" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabDesc">Description</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabSpecs">Specifications</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabReviews">Reviews</button>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tabDesc">
+          <p class="text-muted lh-lg" id="tabDescText" style="max-width:680px"></p>
+        </div>
+        <div class="tab-pane fade" id="tabSpecs">
+          <table class="spec-table" id="specTable"><tbody></tbody></table>
+        </div>
+        <div class="tab-pane fade" id="tabReviews">
+          <div id="reviewsSection"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <section class="py-5 bg-light border-top">
+    <div class="container">
+      <div class="section-hd">
+        <div>
+          <h2 class="section-hd-title">You Might <span>Also Like</span></h2>
+          <p class="section-hd-sub">More from the same category</p>
+        </div>
+        <a href="products.html" class="view-all-link">
+          View All <ion-icon name="arrow-forward-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="row" id="relatedGrid"></div>
+    </div>
+  </section>
+
+</div>
+<!-- /#detailContent -->
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 ShopEZ.  All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.js"></script>
+<script src="js/common.js"></script>
+<script src="js/products.js"></script>
+<script>
+  // Stores currently viewed product
+  let currentProduct = null;
+
+  // Desktop navbar search
+  $('#navSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#navSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  // Mobile sidebar search
+  $('#mobileSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#mobileSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  $(document).ready(() => {
+    // Get product id from URL e.g. ?id=3
+    const productId = parseInt(getURLParam('id'));
+
+    loadProducts((products) => {
+      // Match product by id
+      currentProduct = products.find(p => p.id === productId);
+
+      // Hide skeleton
+      $('#detailLoading').hide();
+
+      // Show error if not found
+      if (!currentProduct) {
+        $('#notFound').show();
+        return;
+      }
+
+      // Show main content
+      $('#detailContent').show();
+
+      // Render detail
+      renderDetail(currentProduct, products);
+    });
+  });
+
+  const renderDetail = (p, products) => {
+    // Page title
+    document.title = `${p.name} – ShopEZ`;
+
+    // Breadcrumb + basic info
+    $('#breadcrumbName').text(p.name);
+    $('#detailCat').text(p.category);
+    $('#detailName').text(p.name);
+    $('#detailDesc').text(p.description);
+    $('#tabDescText').text(p.description);
+
+    // Price
+    $('#detailPrice').text(formatPrice(p.price));
+
+    // Image with fallback
+    const img = $('#detailImg');
+    img.attr('src', p.image).attr('alt', p.name);
+    img.on('error', () => {
+      img.attr('src', 'https://placehold.co/360x360/e2e8f0/94a3b8?text=No+Image');
+    });
+
+    // Rating
+    $('#detailStars').text(`${renderStars(p.rating)} ${p.rating}`);
+    $('#detailReviews').text(`(${p.reviews.toLocaleString()} reviews)`);
+
+    // Discount badge
+    if (p.badge) {
+      $('#detailBadgeWrap').html(
+        `<span class="detail-discount-badge">${p.badge} OFF</span>`
+      );
+    }
+
+    // Original price + savings
+    if (p.originalPrice) {
+      $('#detailOriginal').text(formatPrice(p.originalPrice));
+      const savings = p.originalPrice - p.price;
+      $('#detailSavings').text(`Save ${formatPrice(savings)}`).show();
+    }
+
+    // Shipping text
+    $('#detailShipping').text(
+      p.price >= 50000 ? 'Free Delivery included' : 'Standard delivery: ₹99'
+    );
+
+    // Specifications table
+    const specs = [
+      ['Category',      p.category],
+      ['Price',         formatPrice(p.price)],
+      ['Rating',        `${p.rating} ★`],
+      ['Reviews',       p.reviews.toLocaleString()],
+      ['Availability',  'In Stock'],
+      ['Warranty',      '1 Year'],
+      ['Return Policy', '7-Day Easy Returns'],
+      ['Delivery',      p.price >= 50000 ? 'Free' : '₹99 standard'],
+    ];
+
+    $('#specTable tbody').html(
+      specs.map(([key, val]) => `<tr><td>${key}</td><td>${val}</td></tr>`).join('')
+    );
+
+    // Reviews
+    const reviewData = [
+      { name: 'Rahul S.', comment: 'Excellent product! Build quality is top-notch and totally worth the price.' },
+      { name: 'Priya K.', comment: 'Very happy with this purchase. Fast delivery and great packaging.' },
+      { name: 'Amit V.',  comment: 'Great value for money. Performance exceeded my expectations!' },
+    ];
+
+    $('#reviewsSection').html(
+      reviewData.map(({ name, comment }) => `
+        <div class="review-item">
+          <div class="review-avatar">${name[0]}</div>
+          <div>
+            <div class="review-name">${name}</div>
+            <div class="star-icons small">★★★★★</div>
+            <p class="review-text">${comment}</p>
+          </div>
+        </div>`
+      ).join('')
+    );
+
+    // Related products (same category, different id)
+    const related = products
+      .filter(rp => rp.category === p.category && rp.id !== p.id)
+      .slice(0, 4);
+
+    $('#relatedGrid').html(
+      related.length
+        ? related.map(createProductCard).join('')
+        : '<div class="col-12"><p class="text-muted">No related products found.</p></div>'
+    );
+  };
+
+  // Add current product to cart
+  const handleAddToCart = () => {
+    if (currentProduct) addToCart(currentProduct);
+  };
+
+  const handleBuyNow = () => {
+    if (currentProduct) {
+      addToCart(currentProduct);
+      window.location.href = 'cart.html';
+    }
+  };
+</script>
+</body>
+</html>

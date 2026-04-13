@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products – ShopEZ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar" role="region" aria-label="Promotional announcement">
+  Free Shipping on orders above &#8377;50,000 &nbsp;|&nbsp; Use code <strong>SHOPEZ10</strong> for 10% off
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand logo" aria-label="ShopEZ Home">
+      <ion-icon name="bag-handle" aria-hidden="true"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNav">
+      <form class="nav-search-form d-flex mx-auto my-2 my-lg-0" id="navSearchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" id="navSearchInput"
+                 placeholder="Search products, brands, categories…" autocomplete="off">
+          <button class="btn" type="submit" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <ion-icon name="home-outline"></ion-icon> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="products.html">
+            <ion-icon name="grid-outline"></ion-icon> Products
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cart-nav-link" href="cart.html">
+            <ion-icon name="cart-outline"></ion-icon> Cart
+            <span class="cart-nav-count" id="cartCountBadge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE SIDEBAR ── -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <a href="index.html" class="logo text-decoration-none">
+      <ion-icon name="bag-handle"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="mb-3" id="mobileSearchForm">
+      <input type="search" id="mobileSearchInput" class="form-control" placeholder="Search products...">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item mb-2"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="products.html">Products</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Products</li>
+      </ol>
+    </nav>
+    <h1>All Products</h1>
+    <p>Explore our complete collection of premium electronics &amp; gadgets</p>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="container py-5">
+  <div class="row g-4">
+
+    <!-- Filter Sidebar -->
+    <div class="col-lg-3 col-md-4">
+  <div class="filter-panel">
+
+    <!-- header (ALWAYS VISIBLE) -->
+    <div class="filter-panel-title d-flex justify-content-between align-items-center" id="filterHeader">
+      <div class="d-flex align-items-center gap-2">
+        <ion-icon name="options-outline"></ion-icon>
+        <span>Filters</span>
+      </div>
+
+      <ion-icon name="chevron-down-outline" id="filterArrow" class="filter-arrow"></ion-icon>
+    </div>
+
+    <!-- collapse content -->
+    <div id="filterContent">
+
+      <div class="filter-group">
+        <span class="filter-group-lbl">Category</span>
+        <div id="categoryFilters"></div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-lbl">Price Range (₹)</span>
+        <div class="d-flex align-items-center gap-2">
+          <input type="number" id="minPrice" class="form-control form-control-sm" placeholder="Min">
+          <span class="text-muted small">–</span>
+          <input type="number" id="maxPrice" class="form-control form-control-sm" placeholder="Max">
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-lbl">Min. Rating</span>
+        <select id="filterRating" class="form-select form-select-sm">
+          <option value="">Any Rating</option>
+          <option value="4.5">4.5★ &amp; above</option>
+          <option value="4">4★ &amp; above</option>
+          <option value="3.5">3.5★ &amp; above</option>
+        </select>
+      </div>
+
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary btn-sm" onclick="applyFilters()">
+          <ion-icon name="checkmark-outline"></ion-icon> Apply Filters
+        </button>
+        <button class="btn btn-light btn-sm" onclick="clearFilters()">
+          <ion-icon name="refresh-outline"></ion-icon> Clear All
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+    <!-- Products Area -->
+    <div class="col-lg-9 col-md-8">
+
+      <!-- Mobile search -->
+      <div class="d-md-none mb-3">
+        <input type="search" id="searchBarMobile" class="form-control" placeholder="Search products…" oninput="debouncedFilter()">
+      </div>
+
+      <!-- Desktop search -->
+      <div class="d-none d-md-block mb-4">
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0">
+            <ion-icon name="search-outline"></ion-icon>
+          </span>
+          <input type="search" id="searchBarDesktop" class="form-control border-start-0" placeholder="Search products…" oninput="debouncedFilter()">
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="products-toolbar">
+        <div class="toolbar-result">
+          Showing <strong><span id="productCount">0</span></strong> products
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <label class="form-label mb-0 small text-muted" for="sortSelect">Sort:</label>
+          <select id="sortSelect" class="form-select form-select-sm" style="width:auto" onchange="applyFilters()">
+            <option value="default">Relevance</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="popular">Most Popular</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row" id="productsGrid">
+        <div class="col-lg-4 col-md-6 mb-4"><div class="skeleton" style="height:340px"></div></div>
+        <div class="col-lg-4 col-md-6 mb-4"><div class="skeleton" style="height:340px"></div></div>
+        <div class="col-lg-4 col-md-6 mb-4"><div class="skeleton" style="height:340px"></div></div>
+        <div class="col-lg-4 col-md-6 mb-4"><div class="skeleton" style="height:340px"></div></div>
+        <div class="col-lg-4 col-md-6 mb-4"><div class="skeleton" style="height:340px"></div></div>
+        <div class="col-lg-4 col-md-6 mb-4"><div class="skeleton" style="height:340px"></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand">
+          <ion-icon name="bag-handle"></ion-icon>
+          Shop<span class="brand-accent">EZ</span>
+        </div>
+        <p class="footer-desc">Your one-stop destination for premium electronics and gadgets.</p>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Categories</div>
+        <ul class="footer-links">
+          <li><a href="products.html?category=Electronics">Electronics</a></li>
+          <li><a href="products.html?category=Audio">Audio</a></li>
+          <li><a href="products.html?category=Gaming">Gaming</a></li>
+          <li><a href="products.html?category=Wearables">Wearables</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ShopEZ. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.js"></script>
+<script src="js/common.js"></script>
+<script src="js/products.js"></script>
+<script>
+  // Desktop search
+  $('#navSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#navSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  // Mobile sidebar search
+  $('#mobileSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#mobileSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  /*
+   * debouncedFilter: wraps applyFilters() with a 250ms delay so the full
+   * filter/sort/render cycle only runs after the user stops typing
+   */
+  let _filterTimer;
+  const debouncedFilter = () => {
+    clearTimeout(_filterTimer);
+    _filterTimer = setTimeout(applyFilters, 250);
+  };
+
+  $(document).ready(() => {
+    loadProducts((products) => {
+
+      // Build category checkboxes dynamically from product data
+      const cats = [...new Set(products.map(p => p.category))];
+      document.getElementById('categoryFilters').innerHTML = cats.map(cat => {
+        const count = products.filter(p => p.category === cat).length;
+        return `
+          <div class="form-check mb-1">
+            <input class="form-check-input filter-cat" type="checkbox"
+              id="cat-${cat}" value="${cat}" onchange="applyFilters()">
+            <label class="form-check-label small" for="cat-${cat}">
+              ${cat} <span class="text-muted">(${count})</span>
+            </label>
+          </div>`;
+      }).join('');
+
+      // Collapsible filter panel on mobile — slide toggle below md breakpoint only
+      $('#filterHeader').on('click', function () {
+        if ($(window).width() < 768) {
+          $('#filterContent').slideToggle(300);
+          $('#filterArrow').toggleClass('rotate');
+        }
+      });
+
+      // Read URL params
+      const catParam    = getURLParam('category');
+      const searchParam = getURLParam('search');
+
+      if (catParam && catParam !== 'All') {
+        const cb = document.getElementById(`cat-${catParam}`);
+        if (cb) cb.checked = true;
+      }
+
+      if (searchParam) {
+      ['searchBarDesktop', 'searchBarMobile'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = searchParam;
+      });
+      }
+
+      applyFilters();
+
+      // Enter key triggers filter on price inputs
+      ['minPrice', 'maxPrice'].forEach(id => {
+        document.getElementById(id)?.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') applyFilters();
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

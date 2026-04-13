@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ Toggle</title>
+
+
+    <style>
+      .q1 {
+        background: #f2ece8;
+        width: 50%;
+        padding: 12px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 6px;
+        font-size: 20px;
+      }
+
+      .ans {
+        display: none;
+        width: 50%;
+        padding: 10px;
+        background: #f9f9f9;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Frequently Asked Question</h2>
+      <hr />
+
+      <p class="faq">
+        <p class="q1">1. What is jQuery?</p>
+        <p class="ans">
+          jQuery is a fast, small, and feature-rich JavaScript library that
+          simplifies HTML document traversal, event handling, animation, and
+          Ajax.
+        </p>
+
+        <p class="q1">2. Why use jQuery?</p>
+        <p class="ans">
+          The main purpose of using jQuery is to make it much easier to use
+          JavaScript on your modern and smart website. It is highly recommended
+          to have a basic knowledge of HTML, CSS, and JavaScript.
+        </p>
+
+        <p class="q1">3. What is slideToggle()?</p>
+        <p class="ans">
+          The slideToggle () Method in jQuery is used to show the hidden
+          elements or hide the visible elements respectively
+        </p>
+
+        <p class="q1">4. Is jQuery still used?</p>
+        <p class="ans">
+          Yes, many legacy and simple projects still use jQuery.
+        </p>
+
+        <p class="q1">
+          5. How does jQuery simplify DOM manipulation compared to vanilla
+          JavaScript?
+        </p>
+        <p class="ans">
+          In vanilla JavaScript requires explicit calls such as
+          document.getElementById(), querySelectorAll(), or manual loops. jQuery
+          replaces these with an intuitive and chainable syntax rooted in
+          CSS-style selectors.
+        </p>
+      </p>
+    </div>
+
+
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".q1").click(function () {
+          $(".ans").hide()  
+          $(this).next(".ans").slideToggle();
+          $(this).toggleClass("active");
+
+
+        });
+      });
+    </script>
+  </body>
+</html>

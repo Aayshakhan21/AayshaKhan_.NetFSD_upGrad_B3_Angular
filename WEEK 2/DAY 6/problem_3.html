@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Logger</title>
+</head>
+<body>
+
+<h2>Location Based Logger</h2>
+
+<button onclick="getLocation()">Get My Location</button>
+
+<h3>Current Location</h3>
+<p id="output"></p>
+
+<h3>Location History (Last 5)</h3>
+<ul id="history"></ul>
+
+<script>
+function getLocation() {
+
+    if (!navigator.geolocation) {
+        document.getElementById("output").innerHTML = "Geolocation not supported";
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+}
+
+function showPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    document.getElementById("output").innerHTML =
+        "Latitude: " + lat + "<br>Longitude: " + lon;
+
+    saveLocation(lat, lon);
+    displayHistory();
+}
+
+function showError(error) {
+    let msg = "";
+
+    if (error.code == 1) msg = "Permission denied by user";
+    else if (error.code == 2) msg = "Location unavailable";
+    else if (error.code == 3) msg = "Request timeout";
+    else msg = "Unknown error";
+
+    document.getElementById("output").innerHTML = msg;
+}
+
+function saveLocation(lat, lon) {
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+
+    locations.unshift({
+        latitude: lat,
+        longitude: lon,
+        time: new Date().toLocaleString()
+    });
+
+    if (locations.length > 5) {
+        locations = locations.slice(0, 5);
+    }
+
+    localStorage.setItem("locations", JSON.stringify(locations));
+}
+
+function displayHistory() {
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+    let list = document.getElementById("history");
+    list.innerHTML = "";
+
+    locations.forEach(loc => {
+        let li = document.createElement("li");
+        li.innerHTML = 
+            "Lat: " + loc.latitude + 
+            ", Lon: " + loc.longitude + 
+            " (" + loc.time + ")";
+        list.appendChild(li);
+    });
+}
+
+displayHistory();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Number Analysis Tool </h1>
+    <hr>
+    <h2 id="sign"></h2>
+    <p id="evenOdd"></p>
+    
+    <script>
+        let number = 45
+        let sign = document.getElementById("sign");
+        let evenOdd = document.getElementById("evenOdd")
+
+        sign.innerHTML = "Number is : " +( (number > 0) ? "Positive" : "Negative");
+        let result = ""
+        let i = 0
+
+        while( i<=10 ){
+           if(i%2==0){
+            result = result + ( " EVEN " + i) + "<br/><br/>"
+           }
+           else{
+             result = result + ( " ODD " + i) +" <br/><br/>"
+           }
+           i++;
+        }
+        evenOdd.innerHTML = result
+     
+    </script>
+</body>
+</html>

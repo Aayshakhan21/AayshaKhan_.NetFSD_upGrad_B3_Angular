@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart – ShopEZ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar" role="region" aria-label="Promotional announcement">
+  Free Shipping on orders above &#8377;50,000 &nbsp;|&nbsp; Use code <strong>SHOPEZ10</strong> for 10% off
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand logo" aria-label="ShopEZ Home">
+      <ion-icon name="bag-handle" aria-hidden="true"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNav">
+      <form class="nav-search-form d-flex mx-auto my-2 my-lg-0" id="navSearchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" id="navSearchInput"
+                 placeholder="Search products, brands, categories…" autocomplete="off">
+          <button class="btn" type="submit" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <ion-icon name="home-outline"></ion-icon> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">
+            <ion-icon name="grid-outline"></ion-icon> Products
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active cart-nav-link" href="cart.html">
+            <ion-icon name="cart-outline"></ion-icon> Cart
+            <span class="cart-nav-count" id="cartCountBadge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE SIDEBAR ── -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <a href="index.html" class="logo text-decoration-none">
+      <ion-icon name="bag-handle"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="mb-3" id="mobileSearchForm">
+      <input type="search" id="mobileSearchInput" class="form-control" placeholder="Search products...">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item mb-2"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="products.html">Products</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Shopping Cart</li>
+      </ol>
+    </nav>
+    <h1>Shopping Cart</h1>
+    <p>Review your selected items before proceeding to checkout</p>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="container py-5">
+
+  <!-- Empty State -->
+  <div id="cartEmpty" style="display:none">
+    <div class="empty-state">
+      <div class="empty-state-icon">
+        <ion-icon name="cart-outline"></ion-icon>
+      </div>
+      <h4>Your Cart is Empty</h4>
+      <p>Looks like you haven't added anything yet. Start shopping!</p>
+      <a href="products.html" class="btn btn-primary btn-lg">
+        <ion-icon name="storefront-outline"></ion-icon> Start Shopping
+      </a>
+    </div>
+  </div>
+
+  <!-- Cart Content -->
+  <div id="cartContent" style="display:none">
+    <div class="row g-4">
+
+      <!-- Items Column -->
+      <div class="col-lg-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h5 class="mb-0 fw-bold">
+            Cart Items
+            <span class="text-muted fw-normal fs-6 ms-1">
+              (<span id="summaryCount">0</span> items)
+            </span>
+          </h5>
+          <button class="btn btn-sm btn-outline-danger" onclick="clearEntireCart()">
+            <ion-icon name="trash-outline"></ion-icon> Clear Cart
+          </button>
+        </div>
+        <div id="cartItems"></div>
+      </div>
+
+      <!-- Summary Column -->
+      <div class="col-lg-4">
+        <div class="summary-card">
+          <div class="summary-card-title">
+            <ion-icon name="receipt-outline"></ion-icon> Order Summary
+          </div>
+
+          <div class="summary-row">
+            <span>Original Price</span>
+            <span id="summaryOriginal">₹0</span>
+          </div>
+          <!-- FIX: Added id="savingsRow" so cart.js can hide this row when savings = 0 -->
+          <div class="summary-row savings-row" id="savingsRow">
+            <span><ion-icon name="checkmark-circle-outline"></ion-icon> Your Savings</span>
+            <span id="summarySavings">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery</span>
+            <span id="summaryShipping">₹99</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span id="summaryTotal">₹0</span>
+          </div>
+
+          <div class="summary-free-delivery">
+            <ion-icon name="car-outline"></ion-icon>
+            Free delivery on orders above ₹50,000
+          </div>
+
+          <div class="d-grid gap-2 mt-4">
+            <a href="checkout.html" class="btn btn-primary">
+              <ion-icon name="lock-closed-outline"></ion-icon> Proceed to Checkout
+            </a>
+            <a href="products.html" class="btn btn-light">
+              <ion-icon name="arrow-back-outline"></ion-icon> Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand">
+          <ion-icon name="bag-handle"></ion-icon>
+          Shop<span class="brand-accent">EZ</span>
+        </div>
+        <p class="footer-desc">Your one-stop destination for premium electronics and gadgets.</p>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Categories</div>
+        <ul class="footer-links">
+          <li><a href="products.html?category=Electronics">Electronics</a></li>
+          <li><a href="products.html?category=Audio">Audio</a></li>
+          <li><a href="products.html?category=Gaming">Gaming</a></li>
+          <li><a href="products.html?category=Wearables">Wearables</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ShopEZ.  All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.js"></script>
+<script src="js/common.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  $('#navSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#navSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  $('#mobileSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#mobileSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+</script>
+</body>
+</html>

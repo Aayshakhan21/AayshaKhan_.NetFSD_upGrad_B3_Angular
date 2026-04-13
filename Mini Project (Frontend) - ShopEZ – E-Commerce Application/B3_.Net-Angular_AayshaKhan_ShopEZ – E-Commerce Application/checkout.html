@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – ShopEZ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar" role="region" aria-label="Promotional announcement">
+  Free Shipping on orders above &#8377;50,000 &nbsp;|&nbsp; Use code <strong>SHOPEZ10</strong> for 10% off
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand logo" aria-label="ShopEZ Home">
+      <ion-icon name="bag-handle" aria-hidden="true"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNav">
+      <form class="nav-search-form d-flex mx-auto my-2 my-lg-0" id="navSearchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" id="navSearchInput"
+                 placeholder="Search products, brands, categories…" autocomplete="off">
+          <button class="btn" type="submit" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <ion-icon name="home-outline"></ion-icon> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">
+            <ion-icon name="grid-outline"></ion-icon> Products
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cart-nav-link" href="cart.html">
+            <ion-icon name="cart-outline"></ion-icon> Cart
+            <span class="cart-nav-count" id="cartCountBadge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE SIDEBAR ── -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <a href="index.html" class="logo text-decoration-none">
+      <ion-icon name="bag-handle"></ion-icon>
+      Shop<span class="brand-accent">EZ</span>
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="mb-3" id="mobileSearchForm">
+      <input type="search" id="mobileSearchInput" class="form-control" placeholder="Search products...">
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item mb-2"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="products.html">Products</a></li>
+      <li class="nav-item mb-2"><a class="nav-link" href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="cart.html">Cart</a></li>
+        <li class="breadcrumb-item active">Checkout</li>
+      </ol>
+    </nav>
+    <h1>Checkout</h1>
+    <p>Complete your order securely</p>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="container py-5">
+  <div class="row g-4">
+
+    <!-- Left: Delivery + Payment forms -->
+    <div class="col-lg-7">
+
+      <!-- Step 1: Delivery Information -->
+      <div class="checkout-section">
+        <div class="checkout-section-head">
+          <div class="step-num">1</div>
+          <h6>Delivery Information</h6>
+        </div>
+        <div class="checkout-section-body">
+          <div class="row g-3">
+
+            <div class="col-12">
+              <label class="form-label" for="coName">Full Name <span class="text-danger">*</span></label>
+              <input type="text" id="coName" class="form-control" placeholder="Enter your full name">
+              <div class="invalid-feedback" id="errName"></div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="coEmail">Email Address <span class="text-danger">*</span></label>
+              <input type="email" id="coEmail" class="form-control" placeholder="your@email.com">
+              <div class="invalid-feedback" id="errEmail"></div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="coPhone">Phone Number <span class="text-danger">*</span></label>
+              <input type="tel" id="coPhone" class="form-control" placeholder="10-digit mobile number" maxlength="10">
+              <div class="invalid-feedback" id="errPhone"></div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" for="coAddress">Street Address <span class="text-danger">*</span></label>
+              <textarea id="coAddress" class="form-control" rows="2"
+                        placeholder="House/Flat no., street, area, landmark"></textarea>
+              <div class="invalid-feedback" id="errAddress"></div>
+            </div>
+
+            <div class="col-md-5">
+              <label class="form-label" for="coCity">City <span class="text-danger">*</span></label>
+              <input type="text" id="coCity" class="form-control" placeholder="Your city">
+              <div class="invalid-feedback" id="errCity"></div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label" for="coState">State <span class="text-danger">*</span></label>
+              <select id="coState" class="form-select">
+                <option value="">Select State </option>
+                <optgroup label="States">
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                </optgroup>
+              </select>
+              <div class="invalid-feedback" id="errState"></div>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label" for="coPincode">Pincode <span class="text-danger">*</span></label>
+              <input type="text" id="coPincode" class="form-control" placeholder="6-digit" maxlength="6">
+              <div class="invalid-feedback" id="errPincode"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Payment Method -->
+      <div class="checkout-section">
+        <div class="checkout-section-head">
+          <div class="step-num">2</div>
+          <h6>Payment Method</h6>
+        </div>
+        <div class="checkout-section-body">
+
+          <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="cod" checked>
+            <ion-icon class="payment-option-icon" name="cash-outline"></ion-icon>
+            <div>
+              <div class="payment-title">Cash on Delivery</div>
+              <div class="payment-sub">Pay when your order arrives</div>
+            </div>
+          </label>
+
+          <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="upi">
+            <ion-icon class="payment-option-icon" name="phone-portrait-outline"></ion-icon>
+            <div>
+              <div class="payment-title">UPI / QR Code</div>
+              <div class="payment-sub">Pay instantly with any UPI app</div>
+            </div>
+          </label>
+
+          <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="card">
+            <ion-icon class="payment-option-icon" name="card-outline"></ion-icon>
+            <div>
+              <div class="payment-title">Credit / Debit Card</div>
+              <div class="payment-sub">Visa, Mastercard, RuPay accepted</div>
+            </div>
+          </label>
+
+          <div class="alert alert-info d-flex align-items-center gap-2 mt-3 mb-0 small">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            This is a demo application. No real payments will be processed.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="col-lg-5">
+      <div class="summary-card">
+        <div class="summary-card-title">
+          <ion-icon name="receipt-outline"></ion-icon>
+          Order Summary
+          <span class="text-muted fw-normal fs-6 ms-1">(<span id="coCount">0</span> items)</span>
+        </div>
+
+        <!-- Order items list -->
+        <div id="orderItems" class="mb-4" style="max-height:260px;overflow-y:auto"></div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="coSubtotal">₹0</span>
+        </div>
+        <div class="summary-row savings-row" id="coSavingsRow">
+          <span><ion-icon name="checkmark-circle-outline"></ion-icon> Savings</span>
+          <span id="coSavings">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span id="coShipping">₹99</span>
+        </div>
+        <div class="summary-row total-row">
+          <span>Grand Total</span>
+          <span id="coTotal">₹0</span>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <button class="btn btn-success btn-lg fw-bold" id="placeOrderBtn" onclick="placeOrder()">
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Place Order
+          </button>
+          <a href="cart.html" class="btn btn-light">
+            <ion-icon name="arrow-back-outline"></ion-icon> Back to Cart
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── ORDER SUCCESS MODAL ── -->
+<div class="modal fade" id="successModal" data-bs-backdrop="static" tabindex="-1"
+     aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4">
+      <div class="modal-body text-center p-5">
+
+        <div class="order-success-icon">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+        </div>
+
+        <h4 class="fw-bold mb-2">Order Placed Successfully!</h4>
+        <p class="text-muted mb-4">
+          Thank you, <strong id="modalOrderName"></strong>! Your order has been confirmed.
+        </p>
+
+        <div class="order-id-box">
+          <div class="order-id-lbl">Order ID</div>
+          <div class="order-id-val" id="modalOrderId"></div>
+          <div class="text-muted small mt-2">
+            Total Paid: <strong id="modalOrderTotal"></strong>
+          </div>
+          
+          <div class="text-muted small mt-1">
+            Payment: <strong id="modalOrderPayment"></strong>
+          </div>
+        </div>
+
+        <div class="alert alert-success d-flex align-items-center gap-2 small">
+          <ion-icon name="car-outline"></ion-icon>
+          Estimated delivery: <strong>2–5 business days</strong>
+        </div>
+
+        <a href="index.html" class="btn btn-primary btn-lg w-100">
+          <ion-icon name="home-outline"></ion-icon> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand">
+          <ion-icon name="bag-handle"></ion-icon>
+          Shop<span class="brand-accent">EZ</span>
+        </div>
+        <p class="footer-desc">Your one-stop destination for premium electronics and gadgets.</p>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-heading">Categories</div>
+        <ul class="footer-links">
+          <li><a href="products.html?category=Electronics">Electronics</a></li>
+          <li><a href="products.html?category=Audio">Audio</a></li>
+          <li><a href="products.html?category=Gaming">Gaming</a></li>
+          <li><a href="products.html?category=Wearables">Wearables</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ShopEZ. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/ionicons/ionicons.js"></script>
+<script src="js/common.js"></script>
+<script src="js/checkout.js"></script>
+<script>
+  $('#navSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#navSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+
+  $('#mobileSearchForm').on('submit', (e) => {
+    e.preventDefault();
+    const q = $('#mobileSearchInput').val().trim();
+    if (q) window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+  });
+</script>
+</body>
+</html>

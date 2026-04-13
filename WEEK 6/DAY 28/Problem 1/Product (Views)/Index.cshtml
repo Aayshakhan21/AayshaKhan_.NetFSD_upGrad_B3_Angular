@@ -1,0 +1,31 @@
+﻿@using WebApplication1.Models
+@model List<Product>
+
+<h2 class="display-5">Product List</h2>
+
+<table border="1" class="table table-secondary m-4">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (Product p in Model)
+    {
+        <tr>
+            <td>@p.ProductId</td>
+            <td>@p.ProductName</td>
+            <td>@p.Category</td>
+            <td>@p.Price</td>
+            <td>
+                <a asp-controller="Product"
+                   asp-action="Details"
+                   asp-route-id="@p.ProductId">
+                    View
+                </a>
+            </td>
+        </tr>
+    }
+</table>

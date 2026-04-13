@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Feedback Form</title>
+  </head>
+  <style>
+
+    .box{
+        width:400px;
+        margin:60px auto;
+        background:white;
+        padding:25px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2{
+        text-align:center;
+    }
+
+    label{
+        font-weight:bold;
+    }
+
+    input, select, textarea{
+        width:100%;
+        padding:8px;
+        margin-top:6px;
+        border:1px solid #ccc;
+        border-radius:6px;
+    }
+
+    textarea{
+        height:80px;
+    }
+
+    #btn{
+        margin-top:15px;
+        background:#007b83;
+        color:white;
+        border:none;
+        padding:10px;
+        font-size:16px;
+        border-radius:6px;
+        cursor:pointer;
+    }
+
+    #btn:hover{
+        background:#005f63;
+    }
+
+    #msg{
+        text-align:center;
+        font-weight:bold;
+        margin-top:15px;
+    }
+</style>
+  <body>
+    <div class="box">
+    <h2>Student Feedback Form</h2>
+    <hr />
+    <form action="">
+      <label>Name:</label>
+      <input type="text" id="name" />
+       <br><br>
+      <label>Email:</label>
+      <input type="text" id="email" />
+      <br><br>
+      <label>Course Rating:</label>
+      <select id="rating">
+        <option value="">Select Rating</option>
+        <option>Excellent</option>
+        <option>Good</option>
+        <option>Average</option>
+        <option>Poor</option>
+      </select>
+      <br><br>
+      <label>Comments:</label>
+      <textarea id="comments"></textarea>
+       <br><br>
+      <input type="button" id="btn" value="Submit Feedback">
+    </form>
+      <p id="msg"></p>
+   </div>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#btn").click(function () {
+          let name = $("#name").val().trim();
+          let email = $("#email").val().trim();
+
+          if (name == "" || email == "" ) {
+            $("#msg")
+              .text("Name and Email cannot be empty").css("color", "red");
+          } else if (!email.includes("@")) {
+         $("#msg")
+         .text("Email must contain @ symbol").css("color", "red");
+           }
+              else {
+            $("#msg")
+              .text("Feedback submitted successfully!")
+              .css("color", "green");
+
+            $("#name").val("");
+            $("#email").val("");
+            $("#rating").val("");
+            $("#comments").val("");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

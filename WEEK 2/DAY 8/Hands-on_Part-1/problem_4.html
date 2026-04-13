@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mini Product Search</title>
+
+<style>
+input{
+  padding:8px;
+  width:250px;
+}
+li{
+  list-style:none;
+  padding:6px;
+  margin-bottom: 6px;
+  border:1px solid #ccc;
+  width:200px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Product Search App</h2>
+
+<input type="text" id="searchBox" placeholder="Search product...">
+
+<ul id="productList"></ul>
+<p id="msg"></p>
+
+<script>
+
+const products = [
+  "Laptop",
+  "Mobile",
+  "Headphones",
+  "Keyboard",
+  "Mouse",
+  "Smart Watch",
+  "Charger",
+  "Speaker"
+];
+
+const searchBox = document.getElementById("searchBox");
+const list = document.getElementById("productList");
+const msg = document.getElementById("msg");
+
+function displayProducts(arr){
+  list.innerHTML="";
+  
+  arr.forEach(product=>{
+    let li = document.createElement("li");
+    li.textContent = product;
+    list.appendChild(li);
+  });
+}
+
+displayProducts(products);
+
+searchBox.addEventListener("input", function (){
+  let value = searchBox.value.toLowerCase();
+
+  let filtered = products.filter(p =>
+    p.toLowerCase().includes(value)
+  );
+
+  if(filtered.length === 0){
+    list.innerHTML="";
+    msg.innerHTML="No Results Found";
+  }else{
+    msg.innerHTML="";
+    displayProducts(filtered);
+  }
+});
+
+list.addEventListener("click", function(e){
+  if(e.target.tagName==="LI"){
+    alert("You selected: " + e.target.textContent);
+  }
+});
+</script>
+
+</body>
+</html>
