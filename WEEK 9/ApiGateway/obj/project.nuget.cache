@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "7wOBMRc2rrU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sk223\\AayshaKhan_.NetFSD_upGrad_B3_Angular\\WEEK 9\\43.Day43_Microservices_Security\\ContactManagementMicroservices\\ApiGateway\\ApiGateway.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sk223\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\ipaddressrange\\6.3.0\\ipaddressrange.6.3.0.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.6\\microsoft.aspnetcore.authentication.jwtbearer.10.0.6.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\9.0.11\\microsoft.aspnetcore.jsonpatch.9.0.11.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.aspnetcore.middlewareanalysis\\9.0.11\\microsoft.aspnetcore.middlewareanalysis.9.0.11.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\9.0.11\\microsoft.aspnetcore.mvc.newtonsoftjson.9.0.11.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.extensions.diagnosticadapter\\3.1.32\\microsoft.extensions.diagnosticadapter.3.1.32.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.17.0\\microsoft.identitymodel.abstractions.8.17.0.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.17.0\\microsoft.identitymodel.jsonwebtokens.8.17.0.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.identitymodel.logging\\8.17.0\\microsoft.identitymodel.logging.8.17.0.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.identitymodel.protocols\\8.0.1\\microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\8.0.1\\microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.17.0\\microsoft.identitymodel.tokens.8.17.0.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\ocelot\\24.1.0\\ocelot.24.1.0.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.17.0\\system.identitymodel.tokens.jwt.8.17.0.nupkg.sha512"
+  ],
+  "logs": []
+}
