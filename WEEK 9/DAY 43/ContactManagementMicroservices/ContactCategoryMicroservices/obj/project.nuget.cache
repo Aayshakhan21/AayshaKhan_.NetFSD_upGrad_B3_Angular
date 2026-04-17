@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "s0B1Ush1sN8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sk223\\AayshaKhan_.NetFSD_upGrad_B3_Angular\\WEEK 9\\43.Day43_Microservices_Security\\ContactManagementMicroservices\\ContactCategoryMicroservices\\ContactCategoryMicroservices.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.6\\microsoft.aspnetcore.openapi.10.0.6.nupkg.sha512",
+    "C:\\Users\\sk223\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
